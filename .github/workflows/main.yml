@@ -43,9 +43,10 @@ jobs:
           pip install --upgrade platformio
       - name: Run PlatformIO
         run: |
-          pio run
-          export FIRMWARE_PATH=`find .pio/build/ -name "firmware.hex"`
-          echo "FIRMWARE_PATH=$FIRMWARE_PATH" >> $GITHUB_ENV
+          pio run          
+          cd .pio/build && zip  ../../firmware.zip ./**/*.hex
+#          # export FIRMWARE_PATH=`find .pio/build/ -name "firmware.hex"`
+#          # echo "FIRMWARE_PATH=$FIRMWARE_PATH" >> $GITHUB_ENV
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
