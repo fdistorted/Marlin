@@ -50,7 +50,7 @@ jobs:
         uses: actions/upload-artifact@master
         with:
           name: firmware
-          path: .pio/build/mega2560/firmware.hex
+          path: $FIRMWARE_PATH
       - name: Remove old artifacts
         uses: c-hive/gha-remove-artifacts@v1
         with:
