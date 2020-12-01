@@ -45,7 +45,7 @@ jobs:
         run: |
           pio run
           export FIRMWARE_PATH=`find .pio/build/ -name "firmware.hex"`
-          echo "::set-env name=FIRMWARE_PATH::$FIRMWARE_PATH"
+          echo "FIRMWARE_PATH=$FIRMWARE_PATH" >> $GITHUB_ENV
       - name: Upload build
         uses: actions/upload-artifact@master
         with:
