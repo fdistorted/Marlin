@@ -43,4 +43,15 @@ jobs:
           pip install --upgrade platformio
       - name: Run PlatformIO
         run: pio run
-
+      - name: Upload build
+        uses: actions/upload-artifact@master
+        with:
+          name: firmware
+          path: .pio/build/mega2560/firmware.hex
+      - name: Remove old artifacts
+        uses: c-hive/gha-remove-artifacts@v1
+        with:
+          age: '1 week'
+          # Optional inputs
+          # skip-tags: true
+          skip-recent: 2
