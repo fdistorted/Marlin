@@ -42,7 +42,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install --upgrade platformio
       - name: Run PlatformIO
-        run: pio run
+        run: |
+          pio run
+          echo $PLATFORMIO_BUILD_DIR
+#         run: echo "::set-env name=FOO::$FOO"
       - name: Upload build
         uses: actions/upload-artifact@master
         with:
